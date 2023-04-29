@@ -20,7 +20,7 @@ public class ContaBancariaExAluraAula4 {
                     
                     Operações
                     
-                    1- Consultar saldos
+                    1- Consultar saldo
                     2- Receber valor
                     3- Transferir valor
                     4- sair
