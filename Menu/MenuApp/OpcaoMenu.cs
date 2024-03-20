@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace MenuApp
 
         public void ExibirMenu()
         {
+            Console.Title = "Menu App";
             Console.Clear();
             Console.WriteLine(@"
                                 ███╗░░░███╗███████╗███╗░░██╗██╗░░░██╗
@@ -35,11 +37,7 @@ namespace MenuApp
 
         public int ParImpar(int num)
         {   
-            if (num < 0)
-            {
-                Console.WriteLine("Por favor insira um numero inteiro positivo!");
-                Console.WriteLine("Pressione qualquer tecla para voltar ao menu!");
-            }else if (num % 2 == 0)
+            if (num % 2 == 0)
             {
                 Console.WriteLine($"O número {num} é par");
             }
@@ -52,87 +50,69 @@ namespace MenuApp
 
         public int Tabuada(int num)
         {
-            if (num < 0)
-            {
-                Console.WriteLine("Por favor use apenas números positivos");
-                Console.WriteLine("Pressione qualquer tecla para voltar ao menu!");
-            }
-            else
-            {
                 for (int i = 1; i <= 10; i++)
                 {
                     Console.WriteLine($"{num}x{i} = {num * i}");
                 }
-            }
             return num;
         }
 
         public int NumeroPrimo(int num)
         {
             int cont = 1;
-            if (num < 0)
+
+            for (int i = 1; i < num; i++)
             {
-                Console.WriteLine("Por favor use apenas números positivos");
-                Console.WriteLine("Pressione qualquer tecla para voltar ao menu!");
+                if (num % i == 0)
+                {
+                    cont++;
+                }
+            }
+            
+            if (cont == 2)
+            {
+                Console.WriteLine($"O número {num} é primo");
             }
             else
             {
-                for (int i = 1; i < num; i++)
-                {
-                    if (num % i == 0)
-                    {
-                        cont++;
-                    }
-                }
-                if (cont == 2)
-                {
-                    Console.WriteLine($"O número {num} é primo");
-                }
-                else
-                {
-                    Console.WriteLine($"O número {num} não é primo");
-                }
+            Console.WriteLine($"O número {num} não é primo");
             }
+            
             return num;
         }
 
         public int NumeroFibonacci(int num)
         {
-            if (num < 0)
-            {
-                Console.WriteLine("Por favor insira um numero de termos validos");
-                Console.WriteLine("Pressione qualquer tecla para voltar ao menu!");
-            }
-            else
-            {
-                int a = 0, b = 1, c;
+            
+            int a = 0, b = 1, c;
 
-                for (int cont = 1; cont <= num; cont++)
-                {
-                    Console.Write($"{a}, ");
-                    c = a + b;
-                    a = b;
-                    b = c;
-                }
+            for (int cont = 1; cont <= num; cont++)
+            {
+                Console.Write($"{a}, ");
+                c = a + b;
+                a = b;
+                b = c;
             }
+            
             return num;
         }
 
         public int Fatorial(int num)
         {
-            if (num <= 0)
+            int fatorial = num;
+            if ( fatorial == 0)
             {
-                Console.WriteLine("Por favor insira um número inteiro positivo");
-                Console.WriteLine("Pressione qualquer tecla para voltar ao menu!");
-            }
-            else
+                Console.WriteLine($"O fatorial de {num} é 1");
+            } else
             {
                 for (int i = num - 1; i > 1; i--)
                 {
-                    num *= i;
-                    Console.WriteLine(num);
+                    Console.WriteLine($"{num}x{i} = {num *= i}");
                 }
+
+                Console.WriteLine($"O Fatorial de {fatorial} é {num}");
             }
+
             return num;
         }
     }
